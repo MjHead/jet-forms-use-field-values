@@ -18,6 +18,15 @@ if ( ! defined( 'WPINC' ) ) {
 
 add_action( 'wp_enqueue_scripts', 'jfufv_enqueue_scripts' );
 
-function enqueue_scripts() {
+function jfufv_enqueue_scripts() {
 	wp_enqueue_script( 'jfufv-use-field-values', plugins_url( '/', __FILE__ ) . 'assets/js/use-field-values.js', array( 'jquery' ), '1.0.0', true );
+
+	wp_localize_script( 'jfufv-use-field-values', 'jfufvSearcAttrs', apply_filters( 'jfufv_search_in_attrs', array(
+		'href',
+		'class',
+		'src',
+		'alt',
+		'title',
+	) ) );
+
 }
